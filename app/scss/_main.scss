@@ -1,0 +1,336 @@
+.main {
+  flex-direction: column;
+  @include breakPoint-Up(medium) {
+    flex-direction: row;
+    margin-left: 213px;
+    margin-right: 189px;
+    height: 700px;
+  }
+  @include breakPoint-Down(large) {
+    height: 100%;
+    flex-direction: column;
+  }
+  & .imageSlide {
+    @include breakPoint-Up(medium) {
+      display: none;
+    }
+    &__box {
+      height: 300px;
+      width: 100vw;
+      background-size: 100%;
+      background-position-y: 45%;
+      background-repeat: no-repeat;
+      transition: all 0.3s ease-in-out;
+    }
+    &__button {
+      height: 300px;
+      justify-content: space-between;
+      align-items: center;
+      > div {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: $Light_grayish_blue;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        &:first-child {
+          svg {
+            transform: translateX(-25%);
+          }
+        }
+        &:last-child {
+          svg {
+            transform: translateX(25%);
+          }
+        }
+      }
+    }
+  }
+  & .imageView {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    @include breakPoint-Down(small) {
+      display: none;
+    }
+    &__box {
+      &-highlight {
+        width: 445px;
+        height: 445px;
+        border-radius: 10px;
+        cursor: pointer;
+      }
+      &-preview {
+        position: relative;
+        margin-top: 32px;
+        > img {
+          width: 92px;
+          height: 92px;
+          border-radius: 10px;
+          opacity: 1;
+          cursor: pointer;
+          transition: opacity 0.3s ease-in-out;
+          &:hover {
+            opacity: 0.6;
+          }
+          &:not(:first-child) {
+            margin-left: 21px;
+          }
+        }
+        & .active {
+          opacity: 0.6;
+        }
+      }
+    }
+  }
+  & .imageGallery {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    transition: opacity 0.5s ease-in-out;
+    &__swipe {
+      position: absolute;
+      width: 610px;
+      height: 100vh;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      top: 0;
+      left: 50%;
+      transform: translate(-50%, -5%);
+      > div {
+        width: 56px;
+        height: 56px;
+        border-radius: 50%;
+        background: $White;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        &:first-child {
+          svg {
+            transform: translateX(-25%);
+          }
+        }
+        &:last-child {
+          svg {
+            transform: translateX(25%);
+          }
+        }
+      }
+    }
+    & .flex {
+      flex-direction: column;
+      & .imageGallery__close-button {
+        display: flex;
+        justify-content: end;
+        cursor: pointer;
+        z-index: 3;
+        & svg {
+          & path {
+            transition: fill 0.3s ease-in-out;
+          }
+        }
+        &:hover {
+          & svg {
+            & path {
+              fill: $Orange;
+            }
+          }
+        }
+      }
+    }
+    & .imageView__box {
+      margin-top: 22px;
+      &-highlight {
+        width: 555px;
+        height: 555px;
+      }
+      &-preview {
+        display: flex;
+        justify-content: center;
+        z-index: 0;
+        > div {
+          width: 92px;
+          height: 92px;
+          border-radius: 10px;
+          background: $White;
+          &:not(:first-child) {
+            margin-left: 21px;
+          }
+          > img {
+            width: 92px;
+            height: 92px;
+            border-radius: 10px;
+            opacity: 0.6;
+            cursor: pointer;
+            opacity: 1;
+            transition: opacity 0.3s ease-in-out;
+            &:hover {
+              opacity: 0.6;
+            }
+          }
+          & .active {
+            opacity: 0.6;
+          }
+        }
+      }
+    }
+  }
+  &__info {
+    @include breakPoint-Up(large) {
+      margin-left: 127px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    @include breakPoint-Down(large) {
+      margin-left: 0px;
+      margin-top: 100px;
+    }
+    @include breakPoint-Down(small) {
+      margin-top: 0px;
+    }
+    & .orderBox {
+      flex-direction: column;
+      @include breakPoint-Up(large) {
+        flex-direction: row;
+        margin-top: 40px;
+      }
+    }
+    &-company {
+      margin-top: 25px;
+      color: $Orange;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      @include breakPoint-Up(large) {
+        margin-top: 0px;
+        font-size: 10px;
+      }
+    }
+    &-item {
+      &Name {
+        margin-top: 22px;
+        color: $Very_vark_blue;
+        font-size: 21px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        @include breakPoint-Up(large) {
+          margin-top: 29px;
+          font-size: 33px;
+        }
+      }
+      &Info {
+        font-size: 12px;
+        margin-top: 29px;
+        color: $Dark_grayish_blue;
+        letter-spacing: 1px;
+        @include breakPoint-Up(large) {
+          margin-top: 49px;
+        }
+      }
+      &Price {
+        margin-top: 37px;
+        font-size: 21px;
+        font-weight: 700;
+        justify-content: space-between;
+        align-items: center;
+        @include breakPoint-Up(large) {
+          flex-direction: column;
+          align-items: flex-start;
+          justify-content: center;
+        }
+        &-discount {
+          font-size: 12px;
+          margin-left: 17px;
+          color: $Orange;
+          width: 50px;
+          height: 27px;
+          border-radius: 5px;
+          background: $Pale_orange;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        &-orgCost {
+          color: $Grayish_blue;
+          font-size: 12px;
+          @include breakPoint-Up(large) {
+            margin-top: 17px;
+          }
+        }
+      }
+      &Value {
+        margin-top: 27px;
+        justify-content: space-between;
+        align-items: center;
+        height: 56px;
+        border-radius: 8px;
+        background: $Light_grayish_blue;
+        font-weight: 700;
+        @include breakPoint-Up(large) {
+          margin-top: 0px;
+          width: 156px;
+        }
+        &-minus {
+          margin-left: 24px;
+          transform: translateY(-4px);
+          cursor: pointer;
+          transition: opacity 0.3s ease-in-out;
+          z-index: 0;
+          &:hover {
+            opacity: 0.6;
+          }
+        }
+        &-plus {
+          margin-right: 24px;
+          cursor: pointer;
+          transition: opacity 0.3s ease-in-out;
+          &:hover {
+            opacity: 0.6;
+          }
+        }
+      }
+      &Add {
+        margin-top: 16px;
+        height: 56px;
+        border-radius: 8px;
+        background: $Orange;
+        color: $White;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0px 15px 20px $Pale_orange;
+        transition: opacity 0.3s ease-in-out;
+        cursor: pointer;
+        &:hover {
+          opacity: 0.6;
+        }
+        @include breakPoint-Up(large) {
+          margin-top: 0px;
+          width: 272px;
+          margin-left: 16px;
+        }
+        &-text {
+          font-weight: 700;
+          margin-left: 14px;
+        }
+      }
+    }
+  }
+  & .imageGallery__close {
+    pointer-events: none;
+    opacity: 0;
+    @include breakPoint-Down(small) {
+      width: 0vw;
+    }
+  }
+}
