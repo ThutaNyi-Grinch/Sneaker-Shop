@@ -429,7 +429,6 @@ body.no_scroll {
 }
 
 .header .menu__layer {
-  display:none;
   z-index: 1;
   position: absolute;
   background: black;
